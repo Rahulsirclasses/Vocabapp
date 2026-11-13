@@ -1,3 +1,4 @@
+﻿import { PWAInstallPrompt } from "@/components/pwa-install";
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -9,6 +10,12 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Word Wiz Vocab",
+  },
   title: "WordWiz - Master CAT & OMETS Vocabulary",
   description:
     "Learn and master vocabulary for CAT & OMETS exams with interactive flashcards, quizzes, and daily challenges. Together We Will succeed!",
@@ -27,7 +34,9 @@ export default function RootLayout({
           {children}
         </AuthSessionProvider>
         <Analytics />
+        <PWAInstallPrompt appName="Word Wiz Vocab" themeGradient="from-pink-500 to-rose-600" />
       </body>
     </html>
   )
 }
+
