@@ -1,8 +1,9 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BookOpen, Target, Zap, Heart, BarChart3, Settings } from "lucide-react"
+import { BookOpen, Target, Zap, Heart, BarChart3, Settings, Download } from "lucide-react"
+import { triggerPWAInstall } from "@/components/pwa-install"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
@@ -33,6 +34,16 @@ export default function AppNavigation() {
               priority
             />
           </Link>
+          {/* PWA Install Button */}
+          <button
+            onClick={triggerPWAInstall}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-400/40 text-violet-300 hover:text-white text-xs font-bold transition"
+            title="Install App"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Install</span>
+            <span className="text-[10px] bg-emerald-500/30 px-1 rounded">APK</span>
+          </button>
 
           {/* Navigation Links */}
           <div className="flex items-center gap-1">
@@ -61,3 +72,4 @@ export default function AppNavigation() {
     </nav>
   )
 }
+
